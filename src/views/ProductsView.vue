@@ -1,5 +1,9 @@
 <template>
-  產品列表
+  <div class="text-end mt-3">
+    <button class="btn btn-primary" type="button" @click="$refs.productModalComp.showModal()">
+      增加一個產品
+    </button>
+  </div>
   <table class="table mt-4">
     <thead>
       <tr>
@@ -34,9 +38,12 @@
       </tr>
     </tbody>
   </table>
+  <ProductModalComp ref="productModalComp"></ProductModalComp>
 </template>
 
 <script>
+import ProductModalComp from '../components/ProductModalComp.vue';
+
 export default {
   data() {
     return {
@@ -44,11 +51,15 @@ export default {
       pagination: {},
     };
   },
+  components: {
+    ProductModalComp,
+  },
   methods: {
     getProducts() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`;
       this.$http.get(api)
         .then((res) => {
+          console.log('對',res.data);
           if (res.data.success) {
             this.products = res.data.products;
             this.pagination = res.data.pagination;
