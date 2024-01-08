@@ -1,9 +1,15 @@
 <template>
-  Dashboard
+  <NavbarComp></NavbarComp>
+  <router-view/>
 </template>
 
 <script>
+import NavbarComp from '../components/NavbarComp.vue';
+
 export default {
+  components: {
+    NavbarComp,
+  },
   created() {
     const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
     this.$http.defaults.headers.common.Authorization = token;
@@ -11,7 +17,7 @@ export default {
     this.$http.post(api)
       .then((res) => {
         if (!res.data.success) {
-          this.$router.push('login');
+          this.$router.push('/login');
         }
       });
   },
