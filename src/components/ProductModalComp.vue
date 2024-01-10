@@ -17,13 +17,14 @@
                 <input type="text" class="form-control" id="image" v-model="tempProduct.imageUrl" placeholder="請輸入圖片連結" />
               </div>
               <div class="mb-3">
-                <label for="customFile" class="form-label"
-                  >或 上傳圖片
+                <label for="customFile" class="form-label">或 上傳圖片
                   <i class="fas fa-spinner fa-spin"></i>
                 </label>
                 <input type="file" id="customFile" class="form-control" ref="fileInput" @change="uploadFile" />
               </div>
+              <!--bug 有時候imageUrl可能沒有連上，會沒有綁預覽圖片-->
               <img class="img-fluid" :src="tempProduct.imageUrl" alt="" />
+              <!--note 多圖尚未確定是否要添加這項功能-->
               <!-- 延伸技巧，多圖 -->
               <div class="mt-5" v-if="tempProduct.images">
                 <div v-for="(image, key) in tempProduct.images" class="mb-3 input-group" :key="key">
@@ -114,6 +115,19 @@ export default {
     },
     hideModal() {
       this.modal.hide();
+    },
+    uploadFile() {
+      const uploadedFile = this.$refs.fileInput.files[0];
+      const formData = new FormData();
+      formData.append('file-to-upload', uploadedFile);
+      console.log(formData);
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/upload`;
+      this.$http.post(url, formData)
+        .then((res) => {
+          if (res.data.success) {
+            this.tempProduct.imageUrl = res.data.imageUrl;
+          }
+        });
     },
   },
   mounted() {
