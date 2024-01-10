@@ -1,4 +1,5 @@
 # biscuit-paradise
+<<<<<<< HEAD
 
 ## Project setup
 ```
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+餅乾天堂
+>>>>>>> e3bc60e15bae58611a0ff044246fed2bc66acbc3
