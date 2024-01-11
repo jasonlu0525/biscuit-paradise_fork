@@ -21,6 +21,7 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin';
+  
 export default {
   props: {
     item: {},
