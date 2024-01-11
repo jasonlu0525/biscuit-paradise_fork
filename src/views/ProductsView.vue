@@ -1,4 +1,5 @@
 <template>
+  <LoadingComp :active="isLoading"></LoadingComp>
   <div class="text-end mt-3">
     <button class="btn btn-primary" type="button" @click="openModal(true)">
       增加一個產品
@@ -49,6 +50,7 @@ export default {
       pagination: {},
       tempProduct: {},
       isNew: false,
+      isLoading: false,
     };
   },
   components: {
@@ -58,8 +60,10 @@ export default {
   methods: {
     getProducts() {
       const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`;
+      this.isLoading = true;
       this.$http.get(api)
         .then((res) => {
+          this.isLoading = false;
           if (res.data.success) {
             this.products = res.data.products;
             this.pagination = res.data.pagination;
@@ -78,6 +82,7 @@ export default {
     },
     updateProduct(item) {
       this.tempProduct = item;
+      this.isLoading = true;
       // 新增
       let api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product`;
       let httpMethod = 'post';
@@ -89,6 +94,7 @@ export default {
       const productComponent = this.$refs.productModalComp;
       this.$http[httpMethod](api, { data: this.tempProduct })
         .then((res) => {
+          this.isLoading = false;
           console.log(res);
           productComponent.hideModal();
           this.getProducts();
@@ -101,8 +107,10 @@ export default {
       delComponent.showModal();
     },
     delProduct() {
+      this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
       this.$http.delete(url).then((res) => {
+        this.isLoading = false;
         console.log(res.data);
         const delComponent = this.$refs.delModalComp;
         delComponent.hideModal();
