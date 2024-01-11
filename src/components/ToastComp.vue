@@ -13,7 +13,6 @@
 <script>
 import Toast from 'bootstrap/js/dist/toast';
 export default {
-  name: 'ToastComp',
   props: [
     'msg',
   ],
