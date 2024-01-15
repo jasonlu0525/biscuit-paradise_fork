@@ -37,11 +37,13 @@
   </table>
   <ProductModalComp ref="productModalComp" :product="tempProduct" @update-product="updateProduct"></ProductModalComp>
   <DelModalComp :item="tempProduct" ref="delModalComp" @del-item="delProduct"></DelModalComp>
+  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
 </template>
 
 <script>
 import ProductModalComp from '@/components/ProductModalComp.vue';
 import DelModalComp from '@/components/DelModalComp.vue';
+import Pagination from '@/components/Pagination.vue';
 
 export default {
   data() {
@@ -56,11 +58,12 @@ export default {
   components: {
     ProductModalComp,
     DelModalComp,
+    Pagination,
   },
   inject: ['emitter'],
   methods: {
-    getProducts() {
-      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products`;
+    getProducts(page = 1) {
+      const api = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/products/?page=${page}`;
       this.isLoading = true;
       this.$http.get(api)
         .then((res) => {
