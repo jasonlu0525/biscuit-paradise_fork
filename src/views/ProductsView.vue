@@ -37,7 +37,7 @@
   </table>
   <ProductModalComp ref="productModalComp" :product="tempProduct" @update-product="updateProduct"></ProductModalComp>
   <DelModalComp :item="tempProduct" ref="delModalComp" @del-item="delProduct"></DelModalComp>
-  <Pagination :pages="pagination" @emit-pages="getProducts"></Pagination>
+  <Pagination :pages="pagination" @emit-pages="getProducts" :currentPageInside="currentPageOuter" @go-Next="getProducts" @go-Prev="getProducts"></Pagination>
 </template>
 
 <script>
@@ -53,6 +53,7 @@ export default {
       tempProduct: {},
       isNew: false,
       isLoading: false,
+      currentPageOuter: 1,
     };
   },
   components: {
@@ -68,9 +69,10 @@ export default {
       this.$http.get(api)
         .then((res) => {
           this.isLoading = false;
-          if (res.data.success) {
+          if (res.data.success) {           
             this.products = res.data.products;
             this.pagination = res.data.pagination;
+            this.currentPageOuter = res.data.pagination.current_page;
           }
         });
     },
