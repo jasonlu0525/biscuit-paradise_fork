@@ -101,21 +101,21 @@ export default {
       this.$http[httpMethod](api, { data: this.tempProduct })
         .then((res) => {
           this.isLoading = false;
-          console.log(res);
           productComponent.hideModal();
-          if (res.data.success) {
-          this.getProducts();
-          this.emitter.emit('push-message', {
-            style: 'success',
-            title: '更新成功',
-          });
-        } else {
-          this.emitter.emit('push-message', {
-            style: 'danger',
-            title: '更新失敗',
-            content: res.data.message.join('、'),
-          });
-        }
+          this.$httpMessageState(res,'更新產品列表');
+        //   if (res.data.success) {
+        //   this.getProducts();
+        //   this.emitter.emit('push-message', {
+        //     style: 'success',
+        //     title: '更新成功',
+        //   });
+        // } else {
+        //   this.emitter.emit('push-message', {
+        //     style: 'danger',
+        //     title: '更新失敗',
+        //     content: res.data.message.join('、'),
+        //   });
+        // }
         });
     },
     // 開啟刪除 Modal
