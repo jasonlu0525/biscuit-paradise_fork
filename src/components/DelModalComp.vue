@@ -21,10 +21,7 @@
 </template>
 <script>
 import modalMixin from '@/mixins/modalMixin';
-<<<<<<< HEAD
   
-=======
->>>>>>> f456621 (Feat : 透過彈出視窗刪除品項（刪除商品）& 使用 mixin 整合相同程式碼)
 export default {
   props: {
     item: {},
