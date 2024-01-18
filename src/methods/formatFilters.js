@@ -1,6 +1,6 @@
 export function currency(num) {
-  const decimalNumber = parseInt(num, 10);
-  return decimalNumber.toLocaleString({
+  const decimalNumber = parseFloat(num, 10);
+  return decimalNumber.toLocaleString('zh-Hant-TW',{
     minimumFractionDigits:2,
     maximumFractionDigits:2,
   });
