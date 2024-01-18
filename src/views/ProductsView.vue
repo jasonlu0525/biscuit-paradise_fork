@@ -125,15 +125,10 @@ export default {
       delComponent.showModal();
     },
     delProduct() {
-<<<<<<< HEAD
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
       this.$http.delete(url).then((res) => {
         this.isLoading = false;
-=======
-      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
-      this.$http.delete(url).then((res) => {
->>>>>>> f456621 (Feat : 透過彈出視窗刪除品項（刪除商品）& 使用 mixin 整合相同程式碼)
         console.log(res.data);
         const delComponent = this.$refs.delModalComp;
         delComponent.hideModal();
