@@ -114,13 +114,14 @@ export default {
     delProduct() {
       this.isLoading = true;
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/product/${this.tempProduct.id}`;
-      this.$http.delete(url).then((res) => {
-        this.isLoading = false;
-        console.log(res.data);
-        const delComponent = this.$refs.delModalComp;
-        delComponent.hideModal();
-        this.getProducts();
-      });
+      this.$http.delete(url)
+        .then((res) => {
+          this.isLoading = false;
+          console.log(res.data);
+          const delComponent = this.$refs.delModalComp;
+          delComponent.hideModal();
+          this.getProducts();
+        });
     },
   },
   created() {
