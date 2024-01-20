@@ -72,6 +72,9 @@
                 <td>
                   <div class="input-group input-group-sm">
                     <input type="number" class="form-control"
+                    min="1"
+                          :disabled="item.id === status.loadingItem"
+                          @change="updateCart(item)"
                           v-model.number="item.qty">
                     <div class="input-group-text">/ {{ item.product.unit }}</div>
                   </div>
@@ -155,6 +158,21 @@ export default {
         console.log(response);
         this.cart = response.data.data;
         this.isLoading = false;
+      });
+    },
+    updateCart(item) {
+      const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`;
+      this.isLoading = true;
+      // bug loading元件沒有出現
+      this.status.loadingItem = item.id;
+      const cart = {
+        product_id: item.product_id,
+        qty: item.qty,
+      };
+      this.$http.put(url, { data: cart }).then((res) => {
+        console.log(res);
+        this.status.loadingItem = '';
+        this.getCart();
       });
     },
   },
