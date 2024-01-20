@@ -11,4 +11,3 @@ export function date(time) {
   return localDate.toLocaleDateString();
 }
 
-// bug 數字沒有正確轉換為兩個小數點以及轉後數字不正確
