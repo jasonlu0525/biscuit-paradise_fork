@@ -1,6 +1,5 @@
 <template>
-  <!-- bug fixed-bottom 雖然有達到固定在底部的效果，但是當打開開發工具的時候,nav 會往上重疊到list，透過my-5也沒有辦法避免重疊-->
-  <nav aria-label="Page navigation example" class="fixed-bottom my-5">
+  <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Previous" @click.prevent="goPrev(currentPageInside)">

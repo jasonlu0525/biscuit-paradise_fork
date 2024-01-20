@@ -22,7 +22,6 @@
                 </label>
                 <input type="file" id="customFile" class="form-control" ref="fileInput" @change="uploadFile" />
               </div>
-              <!--bug 有時候imageUrl可能沒有連上，會沒有綁預覽圖片-->
               <img class="img-fluid" :src="tempProduct.imageUrl" alt="" />
               <!--note 多圖尚未確定是否要添加這項功能-->
               <!-- 延伸技巧，多圖 -->

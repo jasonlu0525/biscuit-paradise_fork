@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <LoadingComp :active="isLoading"></LoadingComp>
   <div class="container">
     <div class="row mt-4">
       <div class="col-md-7">
@@ -162,8 +162,7 @@ export default {
     },
     updateCart(item) {
       const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/cart/${item.id}`;
-      this.isLoading = true;
-      // bug loading元件沒有出現
+      this.isLoading = true; 
       this.status.loadingItem = item.id;
       const cart = {
         product_id: item.product_id,
