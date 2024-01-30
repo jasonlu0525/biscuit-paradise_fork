@@ -103,7 +103,7 @@ export default {
       if (this.favorite == null) {
         this.favorite = {}
       }
-      console.log('Local Storage favorite:', this.favorite);
+// bug
       this.favNum = this.favorite.length
     }
   },

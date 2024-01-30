@@ -187,7 +187,7 @@
         <div class="text-end">
           <button
             type="submit"
-            class="btn btn-primary"
+            class="btn btn-primary shadow-sm"
             :class="{ disabled: payment === '選擇付款方式' }"
           >
             送出訂單

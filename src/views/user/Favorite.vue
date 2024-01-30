@@ -22,7 +22,7 @@
           <p class="fs-2">購物車是空的，來去逛逛吧!</p>
           <button
             type="button"
-            class="btn btn-primary"
+            class="btn btn-outline-primary shadow-sm"
             @click="$router.push('/user/productList')"
           >
             看看更多餅乾

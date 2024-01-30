@@ -83,7 +83,6 @@ export default {
       .then((res) => {
         this.coupons = res.data.coupons;
         this.isLoading = false;
-        console.log(res);
       });
     },
     updateCoupon(tempCoupon) {
@@ -91,7 +90,6 @@ export default {
         const url = `${process.env.VUE_APP_API}api/${process.env.VUE_APP_PATH}/admin/coupon`;
         this.$http.post(url, { data: tempCoupon })
         .then((res) => {
-          console.log(res, tempCoupon);
           this.$httpMessageState(res, '新增優惠券');
           this.getCoupons();
           this.$refs.couponModal.hideModal();
@@ -111,7 +109,6 @@ export default {
       this.isLoading = true;
       this.$http.delete(url)
       .then((res) => {
-        console.log(res, this.tempCoupon);
         this.$httpMessageState(res, '刪除優惠券');
         const delComponent = this.$refs.delModal;
         delComponent.hideModal();

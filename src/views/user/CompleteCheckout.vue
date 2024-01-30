@@ -31,19 +31,19 @@
   </div>
   <div class="text-center">
     <i class="bi bi-check-circle-fill text-success fs-1"></i>
-    <h2 class="fw-bold">恭喜您，購買完成!</h2>
+    <h2 class="fw-bold my-3">恭喜您，購買完成!</h2>
     <h3>商品會在1至2個工作天內送達</h3>
   </div>
-  <div class="d-flex justify-content-center">
-    <button type="button" class="btn  m-3" @click="$router.push('/user')">
-      回首頁
+  <div class="d-flex justify-content-center my-3">
+    <button type="button" class="btn btn-outline-primary shadow-sm m-3" @click="$router.push('/user')">
+      返回首頁
     </button>
     <button
       type="button"
-      class="btn  m-3"
+      class="btn btn-outline-info shadow-sm m-3"
       @click="$router.push('/user/productList')"
     >
-      繼續購物!
+      繼續購物
     </button>
   </div>
 </template>
