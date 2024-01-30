@@ -1,15 +1,15 @@
 <template>
   <LoadingComp :active="isLoading"></LoadingComp>
-  <div class="text-end mt-3">
+  <div class="text-end pt-3">
     <button class="btn btn-primary" type="button" @click="openModal(true)">
       增加一個產品
     </button>
   </div>
-  <table class="table mt-4">
+  <table class="table mt-3">
     <thead>
       <tr>
         <th width="120">分類</th>
-        <th>產品名稱</th>
+        <th >產品名稱</th>
         <th width="120">原價</th>
         <th width="120">售價</th>
         <th width="100">是否啟用</th>
@@ -103,6 +103,7 @@ export default {
           this.isLoading = false;
           productComponent.hideModal();
           this.$httpMessageState(res,'更新產品列表');
+          this.getProducts();
         });
     },
     // 開啟刪除 Modal

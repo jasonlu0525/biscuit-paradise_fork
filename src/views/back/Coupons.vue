@@ -4,7 +4,7 @@
     <div class="text-end mt-4">
       <button class="btn btn-primary" @click="openCouponModal(true)">建立新的優惠券</button>
     </div>
-    <table class="table mt-4">
+    <table class="table mt-3">
       <thead>
         <tr>
           <th>名稱</th>
@@ -15,21 +15,21 @@
         </tr>
       </thead>
       <tbody>
-      <tr v-for="(item, key) in coupons" :key="key">
-        <td>{{ item.title }}</td>
-        <td>{{ item.percent }}%</td>
-        <td>{{ $formatFilters.date(item.due_date) }}</td>
-        <td>
-          <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
-          <span v-else class="text-muted">未啟用</span>
-        </td>
-        <td>
-          <div class="btn-group">
-            <button class="btn btn-outline-primary btn-sm" @click="openCouponModal(false, item)" >編輯</button>
-            <button class="btn btn-outline-danger btn-sm" @click="openDelCouponModal(item)" >刪除</button>
-          </div>
-        </td>
-      </tr>
+        <tr v-for="(item, key) in coupons" :key="key">
+          <td>{{ item.title }}</td>
+          <td>{{ item.percent }}%</td>
+          <td>{{ $formatFilters.date(item.due_date) }}</td>
+          <td>
+            <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
+            <span v-else class="text-muted">未啟用</span>
+          </td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-outline-primary btn-sm" @click="openCouponModal(false, item)" >編輯</button>
+              <button class="btn btn-outline-danger btn-sm" @click="openDelCouponModal(item)" >刪除</button>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
     <CouponModal :coupon="tempCoupon" ref="couponModal" @update-coupon="updateCoupon"/>

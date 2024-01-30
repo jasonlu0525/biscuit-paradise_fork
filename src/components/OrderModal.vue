@@ -94,7 +94,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary" @click="$emit('update-order', tempOrder)">確認</button>
+          <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal" @click="$emit('update-order', tempOrder)">確認</button>
         </div>
       </div>
     </div>
@@ -104,11 +104,12 @@
 import modalMixin from '@/mixins/modalMixin';
 
 export default {
-  name: 'orderModal',
   props: {
     order: {
       type: Object,
-      default() { return {}; },
+      default() { 
+        return {}; 
+      },
     },
   },
   data() {

@@ -13,6 +13,7 @@ import App from './App.vue';
 import router from './router';
 import { currency, date } from './methods/formatFilters';
 import $httpMessageState from './methods/pushMessageState';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 const app = createApp(App)
 

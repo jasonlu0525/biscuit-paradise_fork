@@ -14,7 +14,7 @@
     <tbody>
       <template v-for="(item, key) in orders" :key="key">
         <tr v-if="orders.length" :class="{'text-secondary': !item.is_paid}">
-          <td>{{ $filters.date(item.create_at) }}</td>
+          <td>{{ $formatFilters.date(item.create_at) }}</td>
           <td><span v-text="item.user.email" v-if="item.user"></span></td>
           <td>
             <ul class="list-unstyled">
@@ -24,7 +24,7 @@
               </li>
             </ul>
           </td>
-          <td class="text-right">{{ item.total }}</td>
+          <td class="text-right">{{ $formatFilters.currency(item.total) }}</td>
           <td>
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" :id="`paidSwitch${item.id}`" v-model="item.is_paid" @change="updatePaid(item)">
@@ -53,6 +53,7 @@
 import DelModalComp from '@/components/DelModalComp.vue';
 import OrderModal from '@/components/OrderModal.vue';
 import Pagination from '@/components/Pagination.vue';
+
 export default {
   data() {
     return {

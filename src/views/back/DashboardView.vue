@@ -1,5 +1,5 @@
 <template>
-  <NavbarComp></NavbarComp>
+  <NavbarComp/>
   <div class="container-fluid mt-3 position-relative">
     <ToastMessages></ToastMessages>
     <router-view/>

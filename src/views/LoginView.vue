@@ -3,7 +3,7 @@
     <form class="row justify-content-center"
       @submit.prevent="signIn">
       <div class="col-md-6">
-        <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+        <h1 class="h3 mb-3 font-weight-normal">管理者登入</h1>
         <div class="mb-2">
           <label for="inputEmail" class="sr-only">Email address</label>
           <input
@@ -28,9 +28,16 @@
           />
         </div>
 
-        <div class="text-end mt-4">
+        <div class="d-flex justify-content-between align-items-center mt-4">
+          <div>
+            <router-link to="/user" class="fs-5 fw-bold text-decoration-none">
+              <i class="bi bi-house"></i> 返回首頁
+            </router-link>
+            <p class="text-muted ">不是管理者嗎?</p>
+          </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
         </div>
+
       </div>
     </form>
   </div>
