@@ -104,6 +104,7 @@ export default {
         this.favorite = {}
       }
 // bug
+      console.log(this.favorite);
       this.favNum = this.favorite.length
     }
   },
